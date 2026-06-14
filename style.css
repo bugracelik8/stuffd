@@ -37,7 +37,7 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
     background-color: var(--card-bg); border-radius: 18px; padding: 30px 24px; 
     box-shadow: 0 4px 14px var(--card-shadow); transition: 0.2s; cursor: pointer; 
     position: relative; display: flex; flex-direction: column; min-height: 110px;
-    overflow: hidden; /* Fotoğrafların kartın dışına taşmasını engeller */
+    overflow: hidden; 
 }
 .card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px var(--card-hover-shadow); }
 
@@ -48,7 +48,7 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
 .tag { align-self: flex-start; background-color: var(--tag-bg); padding: 4px 10px; border-radius: 12px; font-size: 12px; margin-bottom: 12px; position: relative; z-index: 2; font-weight: bold; color: var(--text-color);}
 .title { font-size: 18px; font-weight: 600; margin: 0; position: relative; z-index: 2; }
 
-/* Modal Tasarımları */
+/* Modallar */
 .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(5px); align-items: center; justify-content: center; }
 .modal-content { background-color: var(--card-bg); border-radius: 20px; padding: 30px; width: 90%; max-width: 600px; position: relative; }
 .kapat-btn { position: absolute; top: 20px; right: 20px; font-size: 24px; cursor: pointer; color: var(--text-muted); }
@@ -64,13 +64,12 @@ textarea { width: 100%; height: 150px; background: var(--bg-color); color: var(-
 .file-upload-box { border: 2px dashed var(--border-color); border-radius: 12px; padding: 30px; text-align: center; margin-bottom: 15px; }
 .file-upload-box input { width: 100%; color: var(--text-color); }
 
-/* Giriş ve Kayıt Ekranı Tasarımı */
+/* Kimlik Doğrulama */
 .auth-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-color); z-index: 9999; display: flex; align-items: center; justify-content: center; }
 .auth-card { background: var(--card-bg); padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px var(--card-shadow); width: 100%; max-width: 350px; text-align: center; }
 .auth-link { font-size: 13px; color: var(--text-muted); margin-top: 15px; cursor: pointer; transition: 0.2s; }
 .auth-link:hover { color: var(--folder-color); }
 
-/* GÜNCELLEME: Mavi ve Kırmızı Bildirimler */
 .mesaj-basari { background-color: rgba(0, 113, 227, 0.1); color: #0071e3; border: 1px solid #0071e3; }
 .mesaj-hata { background-color: rgba(255, 59, 48, 0.1); color: #ff3b30; border: 1px solid #ff3b30; }
 
@@ -80,7 +79,7 @@ textarea { width: 100%; height: 150px; background: var(--bg-color); color: var(-
 .bar { height: 4px; flex: 1; background-color: var(--border-color); border-radius: 2px; transition: background-color 0.3s ease; }
 .guc-metni { font-size: 12px; font-weight: 600; color: var(--text-muted); margin-left: 5px; }
 
-/* GÜNCELLEME: Minimalist Metin Şifre Butonları */
+/* Şifre Butonları */
 .password-wrapper { position: relative; width: 100%; margin-bottom: 15px; }
 .password-wrapper .link-input { margin-bottom: 0 !important; padding-right: 65px; }
 .toggle-password { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); cursor: pointer; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-muted); user-select: none; z-index: 10; transition: color 0.2s ease; }
