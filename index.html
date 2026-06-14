@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stuffd</title>
-    <link rel="stylesheet" href="style.css?v=5">
+    <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
     <div id="authEkrani" class="auth-overlay">
@@ -14,12 +14,10 @@
             <div id="girisFormu">
                 <p style="color: var(--text-muted); margin-bottom: 25px;">Kütüphanene hoş geldin.</p>
                 <input type="email" id="girisEmail" class="link-input" placeholder="E-posta Adresi">
-                
                 <div class="password-wrapper">
                     <input type="password" id="girisSifre" class="link-input" placeholder="Şifre">
                     <span class="toggle-password" id="toggleGirisSifre">Göster</span>
                 </div>
-                
                 <button id="girisBtn" class="primary-btn" style="width: 100%; margin-bottom: 10px;">Giriş Yap</button>
                 <p class="auth-link" id="gitKayitOl">Hesabın yok mu? <b>Kayıt Ol</b></p>
                 <p class="auth-link" id="gitSifreSifirla">Şifreni mi unuttun?</p>
@@ -28,13 +26,11 @@
             <div id="kayitFormu" style="display: none;">
                 <p style="color: var(--text-muted); margin-bottom: 25px;">Yeni bir başlangıç yap.</p>
                 <input type="email" id="kayitEmail" class="link-input" placeholder="E-posta Adresi">
-                
                 <div class="password-wrapper">
                     <input type="password" id="kayitSifre" class="link-input" placeholder="Şifre">
                     <span class="toggle-password" id="toggleKayitSifre">Göster</span>
                 </div>
                 <div class="sifre-kurallari">En az 8 karakter, 1 büyük harf ve 1 rakam içermelidir.</div>
-                
                 <div class="sifre-guc-kutusu">
                     <div class="guc-barlari">
                         <div class="bar" id="bar1"></div><div class="bar" id="bar2"></div>
@@ -43,12 +39,10 @@
                     </div>
                     <div class="guc-metni" id="gucMetni">Şifre Gücü</div>
                 </div>
-
                 <div class="password-wrapper">
                     <input type="password" id="kayitSifreTekrar" class="link-input" placeholder="Şifreyi Tekrar Girin">
                     <span class="toggle-password" id="toggleKayitSifreTekrar">Göster</span>
                 </div>
-
                 <button id="kayitBtn" class="primary-btn" style="width: 100%; margin-bottom: 10px; background-color: #34c759;">Hesap Oluştur</button>
                 <p class="auth-link" id="gitGirisYap">Zaten hesabın var mı? <b>Giriş Yap</b></p>
             </div>
@@ -106,7 +100,7 @@
                 <h2 class="title" style="font-size: 24px; margin-bottom: 20px;">Yeni Ne Ekliyoruz?</h2>
             </div>
             <div class="modal-body">
-                <input type="text" id="yeniBaslik" class="link-input" placeholder="Başlık (Örn: Caro-Kann Savunması)">
+                <input type="text" id="yeniBaslik" class="link-input" placeholder="Başlık (Örn: Film İncelemesi)">
                 <div class="segment-control">
                     <input type="radio" id="turNot" name="icerikTuru" value="not" checked>
                     <label for="turNot">📝 Yazılı Not</label>
@@ -114,7 +108,7 @@
                     <label for="turPdf">📄 PDF Yükle</label>
                 </div>
                 <div id="yaziliNotAlani">
-                    <textarea id="yeniNot" placeholder="Notlarını, analizlerini veya günlük düşüncelerini buraya yaz..."></textarea>
+                    <textarea id="yeniNot" placeholder="Notlarını buraya yaz..."></textarea>
                 </div>
                 <div id="pdfYuklemeAlani" style="display: none;">
                     <div class="file-upload-box">
@@ -145,6 +139,6 @@
         </div>
     </div>
 
-    <script type="module" src="app.js"></script>
+    <script type="module" src="app.js?v=6"></script>
 </body>
 </html>
