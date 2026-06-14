@@ -1,4 +1,3 @@
-// FIREBASE MODÜLLERİ (Storage Eklendi)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
@@ -17,7 +16,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-const storage = getStorage(app); // Storage modülünü başlattık
+const storage = getStorage(app);
 
 let currentUser = null;
 let kategoriler = []; let altKategoriler = []; let icerikler = [];
@@ -30,10 +29,9 @@ const kayitFormu = document.getElementById('kayitFormu');
 const sifreFormu = document.getElementById('sifreFormu');
 const authMesaj = document.getElementById('authMesaj');
 
-// BİLDİRİM VE ŞİFRE MANTIĞI (Senkronize Sistem)
 function mesajGoster(metin, tur) {
     authMesaj.innerText = metin;
-    authMesaj.className = tur === 'hata' ? 'mesaj-hata' : 'mesaj-basari'; // Apple Bilgi Mavisi
+    authMesaj.className = tur === 'hata' ? 'mesaj-hata' : 'mesaj-basari';
     authMesaj.style.display = 'block';
 }
 
@@ -99,26 +97,28 @@ if(kayitSifre) {
 }
 
 document.getElementById('kayitBtn').addEventListener('click', () => {
-    const email = document.getElementById('kayitEmail').value; const sifre = kayitSifre.value; const sifreTekrar = document.getElementById('kayitSifreTekrar').value;
+    const email = document.getElementById('kayitEmail').value.trim(); 
+    const sifre = kayitSifre.value; 
+    const sifreTekrar = document.getElementById('kayitSifreTekrar').value;
     if (!/^(?=.*[A-Z])(?=.*\d).{8,}$/.test(sifre)) { mesajGoster("Şifreniz zayıf! Lütfen kurallara uygun bir şifre belirleyin.", "hata"); return; }
     if (sifre !== sifreTekrar) { mesajGoster("Şifreler uyuşmuyor! Lütfen iki alana da aynı şifreyi girin.", "hata"); return; }
     createUserWithEmailAndPassword(auth, email, sifre).then(() => mesajGoster("Hesap başarıyla oluşturuldu! Giriş yapılıyor...", "basari")).catch(error => mesajGoster("Kayıt Hatası: " + error.message, "hata"));
 });
 
 document.getElementById('girisBtn').addEventListener('click', () => {
-    const email = document.getElementById('girisEmail').value; const sifre = girisSifre.value;
+    const email = document.getElementById('girisEmail').value.trim(); 
+    const sifre = girisSifre.value;
     signInWithEmailAndPassword(auth, email, sifre).catch(error => mesajGoster("Giriş Hatası: Bilgiler hatalı veya hesap yok.", "hata"));
 });
 
 document.getElementById('sifreSifirlaBtn').addEventListener('click', () => {
-    const email = document.getElementById('sifreSifirlaEmail').value;
+    const email = document.getElementById('sifreSifirlaEmail').value.trim();
     if (!email) { mesajGoster("Lütfen kayıtlı e-posta adresinizi girin.", "hata"); return; }
     sendPasswordResetEmail(auth, email).then(() => mesajGoster("Şifre sıfırlama linki e-posta adresinize gönderildi.", "basari")).catch(error => mesajGoster("Hata: " + error.message, "hata"));
 });
 
 document.getElementById('cikisBtn').addEventListener('click', () => signOut(auth));
 
-// BULUT VERİTABANI VE İŞLEMLER
 const grid = document.getElementById('kutuphaneGrid'); const breadcrumb = document.getElementById('breadcrumb');
 const detayModal = document.getElementById('detayModal'); const yeniIcerikModal = document.getElementById('yeniIcerikModal'); const klasorModal = document.getElementById('klasorModal');
 
@@ -160,8 +160,6 @@ function ekranıGuncelle() {
         if(buKlasordekiler.length === 0) grid.innerHTML = '<p style="color:var(--text-muted);">Bu klasör boş.</p>';
         buKlasordekiler.forEach(altKat => {
             const card = document.createElement('div'); card.className = 'card';
-            
-            // Eğer fotoğraflı bir alt menü ise arka plana fotoğrafı basıyoruz
             if (altKat.imgUrl) {
                 card.style.backgroundImage = `linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('${altKat.imgUrl}')`;
                 card.style.backgroundSize = 'cover';
@@ -195,7 +193,6 @@ document.getElementById('yeniEkleBtn').addEventListener('click', () => {
         document.getElementById('klasorModalBaslik').innerText = !aktifKat ? "Yeni Ana Klasör" : "Yeni Alt Klasör";
         document.getElementById('klasorAdInput').value = "";
         
-        // Eğer Alt Klasör ekranındaysak fotoğraf yükleme kutusunu göster
         const resimAlani = document.getElementById('klasorResimAlani');
         const resimInput = document.getElementById('klasorResimInput');
         if (aktifKat && !aktifAltKat) { resimAlani.style.display = 'block'; resimInput.value = ''; } 
@@ -207,7 +204,6 @@ document.getElementById('yeniEkleBtn').addEventListener('click', () => {
     }
 });
 
-// FOTOĞRAFLI ALT KLASÖR OLUŞTURMA MANTIĞI
 document.getElementById('klasorOlusturBtn').addEventListener('click', async () => {
     const ad = document.getElementById('klasorAdInput').value.trim(); if(!ad) return;
     const btn = document.getElementById('klasorOlusturBtn');
@@ -219,7 +215,6 @@ document.getElementById('klasorOlusturBtn').addEventListener('click', async () =
         let imgUrl = null;
         const resimInput = document.getElementById('klasorResimInput');
         
-        // Eğer fotoğraf seçilmişse Storage'a yüklüyoruz
         if (resimInput.files.length > 0) {
             btn.innerText = "Fotoğraf Yükleniyor..."; btn.disabled = true;
             const file = resimInput.files[0];
