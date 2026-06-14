@@ -3,14 +3,15 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, on
 import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
 
-// BURAYA KENDİ FIREBASE ANAHTARLARINI YAPIŞTIR
+// SENİN GERÇEK FİREBASE ANAHTARLARIN
 const firebaseConfig = {
-    apiKey: "SENIN_API_KEY",
-    authDomain: "SENIN_DOMAIN",
-    projectId: "SENIN_PROJECT_ID",
-    storageBucket: "SENIN_STORAGE_BUCKET",
-    messagingSenderId: "SENIN_SENDER_ID",
-    appId: "SENIN_APP_ID"
+  apiKey: "AIzaSyCK3hB5I7XP4EETba2PjqChBeQR1rbbGdU",
+  authDomain: "shelvd-d99e0.firebaseapp.com",
+  projectId: "shelvd-d99e0",
+  storageBucket: "shelvd-d99e0.firebasestorage.app",
+  messagingSenderId: "392384969338",
+  appId: "1:392384969338:web:35a290865aa081c7fad9c3",
+  measurementId: "G-V37XLZHYEE"
 };
 
 const app = initializeApp(firebaseConfig);
